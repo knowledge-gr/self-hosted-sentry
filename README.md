@@ -1,6 +1,9 @@
 # Sentry Self-Hosted – Startup and Shutdown Guide
 Use `docker-compose` to bring up all services:
   `docker-compose up -d`
+Safe option : 
+`docker compose up --wait`
+  
 
 # 🛑 Shutdown Instructions
 
