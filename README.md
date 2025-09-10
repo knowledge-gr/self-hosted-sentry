@@ -25,3 +25,17 @@ This stops and removes all containers but keeps volumes/data intact.
 [Sentry](https://sentry.io/), feature-complete and packaged up for low-volume deployments and proofs-of-concept.
 
 Documentation [here](https://develop.sentry.dev/self-hosted/).
+
+Για Rentetion manualy 
+
+https://develop.sentry.dev/self-hosted/troubleshooting/postgres/ 
+
+Δουλεψε ο τροπος με το delete και VACUM
+
+
+docker exec -it pg_container bash
+
+psql -h postgres -U postgres -d postgres
+
+DELETE FROM public.nodestore_node WHERE "timestamp" < NOW() - INTERVAL '[SENTRY_RETENTION_DAYS] DAY';
+VACUUM FULL public.nodestore_node;
