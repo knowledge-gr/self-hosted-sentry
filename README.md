@@ -32,6 +32,9 @@ https://develop.sentry.dev/self-hosted/troubleshooting/postgres/
 
 Δουλεψε ο τροπος με το delete και VACUM
 
+Πρώτα με το tool που είναι στο Sentry 
+
+docker compose run --rm -T web cleanup --days 7 -m nodestore -l debug
 
 docker exec -it pg_container bash
 
