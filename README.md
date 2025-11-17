@@ -34,6 +34,10 @@ https://develop.sentry.dev/self-hosted/troubleshooting/postgres/
 
 Πρώτα με το tool που είναι στο Sentry 
 
+docker exec -it sentry-self-hosted-web-1 sentry cleanup --days 90
+
+Αν δεν πάμε στα από κάτω
+
 docker compose run --rm -T web cleanup --days 7 -m nodestore -l debug
 
 docker exec -it pg_container bash
@@ -42,3 +46,7 @@ psql -h postgres -U postgres -d postgres
 
 DELETE FROM public.nodestore_node WHERE "timestamp" < NOW() - INTERVAL '[SENTRY_RETENTION_DAYS] DAY';
 VACUUM FULL public.nodestore_node;
+
+Αν δεν παίξει με την μια το vacuum λόγω του storage
+
+REINDEX TABLE public.nodestore_node;
